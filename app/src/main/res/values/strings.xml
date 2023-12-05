@@ -2,4 +2,5 @@
     <string name="app_name">DDDice</string>
     <string name="dice_image_description">Dice image</string>
     <string name="statistics">Statistics</string>
+    <string name="reset_statistics">Reset statistics</string>
 </resources>

@@ -1,12 +1,12 @@
 package com.styx.mp.dddice
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import kotlin.random.Random
 
@@ -71,10 +71,18 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.statistics -> {
-                // Start StatisticsActivity and pass the counts to it
                 val intent = Intent(this, StatisticsActivity::class.java)
-                intent.putExtra("counts", statistics.getCounts())
+
+                val valuesList = ArrayList(statistics.getCounts().keys)
+                val countsList = ArrayList(statistics.getCounts().values)
+                intent.putIntegerArrayListExtra("values", valuesList)
+                intent.putIntegerArrayListExtra("counts", countsList)
                 startActivity(intent)
+                true
+            }
+
+            R.id.reset_statistics -> {
+                statistics.reset()
                 true
             }
 

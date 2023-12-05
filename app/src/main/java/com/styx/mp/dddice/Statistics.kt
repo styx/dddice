@@ -1,19 +1,17 @@
 package com.styx.mp.dddice
 
 class Statistics {
-    private val counts = IntArray(13) { 0 } // Indices 0 and 1 are not used
+    private val counts = mutableMapOf<Int, Int>()
 
     fun updateStatistics(sum: Int) {
-        counts[sum]++
+        counts[sum] = counts.getOrDefault(sum, 0) + 1
     }
 
-    fun getCounts(): IntArray {
+    fun getCounts(): Map<Int, Int> {
         return counts
     }
 
     fun reset() {
-        for (i in counts.indices) {
-            counts[i] = 0
-        }
+        counts.clear()
     }
 }

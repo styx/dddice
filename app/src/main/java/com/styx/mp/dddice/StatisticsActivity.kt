@@ -1,7 +1,7 @@
 package com.styx.mp.dddice
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 
 class StatisticsActivity : AppCompatActivity() {
@@ -11,7 +11,9 @@ class StatisticsActivity : AppCompatActivity() {
 
         val statisticsRecyclerView: RecyclerView = findViewById(R.id.statistics_recycler_view)
 
-        val counts = intent.getIntArrayExtra("counts") ?: intArrayOf()
-        statisticsRecyclerView.adapter = StatisticsAdapter(counts)
+        val valuesList: ArrayList<Int> = intent.getIntegerArrayListExtra("values")!!
+        val countsList: ArrayList<Int> = intent.getIntegerArrayListExtra("counts")!!
+
+        statisticsRecyclerView.adapter = StatisticsAdapter(valuesList, countsList)
     }
 }
