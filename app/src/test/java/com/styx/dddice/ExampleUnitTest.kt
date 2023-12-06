@@ -1,4 +1,4 @@
-package com.styx.mp.dddice
+package com.styx.dddice
 
 import org.junit.Test
 

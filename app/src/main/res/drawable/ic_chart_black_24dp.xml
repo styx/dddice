@@ -1,0 +1,22 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24.0"
+    android:viewportHeight="24.0">
+
+    <!-- First bar -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M4,22v-6h4v6z" />
+
+    <!-- Second bar -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M10,22v-12h4v12z" />
+
+    <!-- Third bar -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M16,22v-20h4v20z" />
+
+</vector>

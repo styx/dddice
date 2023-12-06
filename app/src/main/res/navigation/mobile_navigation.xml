@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_roll">
+
+    <fragment
+        android:id="@+id/navigation_roll"
+        android:name="com.styx.dddice.ui.roll.RollFragment"
+        android:label="@string/title_roll"
+        tools:layout="@layout/fragment_roll" />
+
+    <fragment
+        android:id="@+id/navigation_statistics"
+        android:name="com.styx.dddice.ui.statistics.StatisticsFragment"
+        android:label="@string/title_statistics"
+        tools:layout="@layout/fragment_statistics" />
+</navigation>

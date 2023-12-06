@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">DDDice</string>
-    <string name="dice_image_description">Dice image</string>
-    <string name="statistics">Statistics</string>
-    <string name="reset_statistics">Reset statistics</string>
+    <string name="title_roll">ROLL-ROLL-ROLL</string>
+    <string name="title_navigation_roll">Roll</string>
+    <string name="title_statistics">Statistics</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="dice_image">Dice image</string>
 </resources>
