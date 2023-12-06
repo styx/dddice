@@ -1,33 +1,30 @@
 package com.styx.dddice.ui.statistics
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.styx.dddice.R
-import com.styx.mp.dddice.Statistics
+import com.styx.mp.dddice.Statistic
 
-class StatisticsAdapter(private val statistics: Statistics) : RecyclerView.Adapter<StatisticsViewHolder>() {
+class StatisticsAdapter(private var statistics: ArrayList<Statistic>) : RecyclerView.Adapter<StatisticsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StatisticsViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.statistics_item, parent, false)
         return StatisticsViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: StatisticsViewHolder, position: Int) {
-        val counts = statistics.getCounts()
-        Log.d("StatisticsAdapter", "counts: $counts")
-        val totalRolls: Int = counts.values.sum()
-        val value = position + 2
-        val count = counts.getOrDefault(value, 0)
+        val statistic = statistics[position]
+        holder.textViewValue.text = String.format("%02d", statistic.value)
+        holder.textViewCount.text = String.format("%d", statistic.sum)
+        holder.textViewPercent.text = String.format("%02d%%", statistic.percent)
+    }
 
-        val percentage = if (totalRolls != 0) (count * 100 / totalRolls) else 0
-
-        holder.textViewValue.text = String.format("%02d", value)
-        holder.textViewCount.text = String.format("%d", count)
-        holder.textViewPercent.text = String.format("%02d%%", percentage)
+    fun submitList(newStatistics: ArrayList<Statistic>) {
+        statistics = newStatistics
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {
-        return 11
+        return statistics.size
     }
 }

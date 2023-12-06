@@ -1,5 +1,7 @@
 package com.styx.mp.dddice
 
+data class Statistic(val value: Int, val sum: Int, val percent: Int)
+
 class Statistics {
     private val counts = mutableMapOf<Int, Int>()
 
@@ -9,6 +11,18 @@ class Statistics {
 
     fun getCounts(): Map<Int, Int> {
         return counts
+    }
+
+    fun toMutableList(): MutableList<Statistic> {
+        val totalRolls: Int = counts.values.sum()
+
+        return counts.map {
+            Statistic(
+                it.key,
+                it.value,
+                if (totalRolls != 0) (it.value * 100 / totalRolls) else 0
+            )
+        }.toMutableList()
     }
 
     fun reset() {

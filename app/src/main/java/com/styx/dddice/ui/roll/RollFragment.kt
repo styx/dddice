@@ -1,9 +1,15 @@
 package com.styx.dddice.ui.roll
 
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
+import android.os.VibratorManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.styx.dddice.R
@@ -52,6 +58,27 @@ class RollFragment : Fragment() {
         binding.dice1.diceImage.setImageResource(getDiceImage(diceRoll1))
         binding.dice2.diceImage.setImageResource(getDiceImage(diceRoll2))
         binding.sumTextView.text = sum.toString()
+
+        if (sum == 7) {
+            binding.sumTextView.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
+        } else {
+            binding.sumTextView.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+        }
+
+        vibrate()
+    }
+
+    private fun vibrate() {
+        val vibrator = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            val vibratorManager =
+                context?.getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
+            vibratorManager.defaultVibrator
+        } else {
+            @Suppress("DEPRECATION")
+            context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        }
+
+        vibrator.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE))
     }
 
     private fun getDiceImage(diceRoll: Int): Int {
