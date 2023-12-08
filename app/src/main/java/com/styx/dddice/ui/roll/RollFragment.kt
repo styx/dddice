@@ -62,7 +62,7 @@ class RollFragment : Fragment() {
         if (sum == 7) {
             binding.sumTextView.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
         } else {
-            binding.sumTextView.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+            binding.sumTextView.setTextColor(ContextCompat.getColor(requireContext(), R.color.bigText))
         }
 
         vibrate()
@@ -78,7 +78,7 @@ class RollFragment : Fragment() {
             context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
         }
 
-        vibrator.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE))
+        vibrator.vibrate(VibrationEffect.createOneShot(50, 1))
     }
 
     private fun getDiceImage(diceRoll: Int): Int {

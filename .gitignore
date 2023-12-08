@@ -15,6 +15,7 @@
 /.idea/modules.xml
 /.idea/navEditor.xml
 /.idea/workspace.xml
+/app/release/
 /build
 /captures
 /local.properties
